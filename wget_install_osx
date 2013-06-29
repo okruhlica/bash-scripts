@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This script installs wget on OS X from the official distribution site.
+# Author: Adam Okruhlica (adam@okruhlica.eu)
+# Source: http://osxdaily.com/2012/05/22/install-wget-mac-os-x/
+# ------------------------------------------------------------------------
+
+# 1. Get and untar the tarball
+curl -O http://ftp.gnu.org/gnu/wget/wget-1.14.tar.gz
+tar -xzf wget-1.14.tar.gz 
+cd wget-1.14
+
+# 2. Configure with the appropriate –with-ssl flag, compile and install
+./configure --with-ssl=openssl 
+make
+sudo make install
+
+# 3. Cleanup and show installed path
+cd ..
+rm -rf wget*
+which wget
